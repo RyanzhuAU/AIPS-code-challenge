@@ -1,22 +1,26 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class TrafficData {
-	private Date recordTimeStamp;
+	private LocalDateTime recordTimeStamp;
 	
 	private Integer carRecord;
 	
-	public TrafficData(Date recordTimeStamp, Integer carRecord) {
+	public TrafficData() {
+		
+	}
+	
+	public TrafficData(LocalDateTime recordTimeStamp, Integer carRecord) {
 		this.recordTimeStamp = recordTimeStamp;
 		this.carRecord = carRecord;
 	}
 
-	public Date getRecordTimeStamp() {
+	public LocalDateTime getRecordTimeStamp() {
 		return recordTimeStamp;
 	}
 
-	public void setRecordTimeStamp(Date recordTimeStamp) {
+	public void setRecordTimeStamp(LocalDateTime recordTimeStamp) {
 		this.recordTimeStamp = recordTimeStamp;
 	}
 
