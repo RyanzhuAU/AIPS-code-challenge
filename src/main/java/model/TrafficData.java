@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TrafficData {
 	
@@ -31,6 +32,11 @@ public class TrafficData {
 
 	public void setCarRecord(int carRecord) {
 		this.carRecord = carRecord;
+	}
+	
+	public void generateReport() {
+		System.out.println(this.recordTimeStamp.format(DateTimeFormatter.ISO_DATE_TIME) + 
+				" " + this.carRecord);
 	}
 	
 	

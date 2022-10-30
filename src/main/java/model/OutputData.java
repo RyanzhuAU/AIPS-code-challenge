@@ -1,15 +1,16 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class OutputData {
 	
 	private int totalCarRecords = 0;
 	
-	private Map<LocalDate, Integer> dailyTrafficRecords = new HashMap<>();
+	private Map<LocalDate, Integer> dailyTrafficRecords = new LinkedHashMap<>(); // just make sure the daily records are in the date order
 	
 	private ArrayList<TrafficData> topThreeTrafficRecords;
 	
@@ -57,5 +58,33 @@ public class OutputData {
 
 	public void setLeastThreeContiguousRecords(ArrayList<TrafficData> leastCarRecords) {
 		this.leastThreeContiguousRecords = leastCarRecords;
+	}
+	
+	public void generateOutputReport() {
+		// Q1
+		System.out.println("===== Total cars record =====");
+		System.out.println("The total number of cars is " + this.totalCarRecords);
+		System.out.println();
+		
+		// Q2
+		System.out.println("===== Daily cars record =====");
+		this.dailyTrafficRecords.entrySet().stream()
+			.forEach(data -> System.out.println(data.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + 
+					" " + data.getValue()));
+		
+		System.out.println();
+		
+		// Q3
+		System.out.println("===== The top 3 half hours with most cars =====");
+		this.topThreeTrafficRecords.forEach(record -> record.generateReport());
+
+		System.out.println();
+		
+		// Q4
+		System.out.println("===== The 1.5 hour period with least cars =====");
+		this.leastThreeContiguousRecords.forEach(record -> record.generateReport());
+
+		System.out.println();
+
 	}
 }

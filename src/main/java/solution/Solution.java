@@ -4,21 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import model.OutputData;
 import model.TrafficData;
 
 public class Solution {
 	public static void main(String[] args) {
-
-//		ClassLoader classLoader = getClass().getClassLoader();
-//		File file = new File(classLoader.getResource("test_data.txt").getFile());
-		FileReader fileReader;
 		try {
-			fileReader = new FileReader("test_data.txt");
+			FileReader fileReader = new FileReader("test_data.txt");
 			FileLoader fileLoader = new FileLoader();
 			
 			ArrayList<TrafficData> trafficDataList = fileLoader.loadRecordFile(fileReader);
 			
-			System.out.print(trafficDataList.size());
+			TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
+			OutputData outputData = dataAnalyzer.analysisTrafficData();
+			
+			outputData.generateOutputReport();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
