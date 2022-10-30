@@ -1,8 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class OutputData {
@@ -11,9 +11,9 @@ public class OutputData {
 	
 	private Map<LocalDate, Integer> dailyTrafficRecords = new HashMap<>();
 	
-	private List<TrafficData> topThreeTrafficRecord;
+	private ArrayList<TrafficData> topThreeTrafficRecords;
 	
-	private List<TrafficData> leastCarRecords; // The 1.5 hour period with least cars (i.e. 3 contiguous half hour records)
+	private ArrayList<TrafficData> leastCarRecords; // The 1.5 hour period with least cars (i.e. 3 contiguous half hour records)
 	
 	public OutputData() {
 		
@@ -43,19 +43,19 @@ public class OutputData {
 		}
 	}
 
-	public List<TrafficData> getTopThreeTrafficRecord() {
-		return topThreeTrafficRecord;
+	public ArrayList<TrafficData> getTopThreeTrafficRecord() {
+		return topThreeTrafficRecords;
 	}
 
-	public void setTopThreeTrafficRecord(List<TrafficData> topThreeTrafficRecord) {
-		this.topThreeTrafficRecord = topThreeTrafficRecord;
+	public void setTopThreeTrafficRecords(ArrayList<TrafficData> topThreeTrafficRecord) {
+		this.topThreeTrafficRecords = topThreeTrafficRecord;
 	}
 
-	public List<TrafficData> getLeastCarRecords() {
+	public ArrayList<TrafficData> getLeastCarRecords() {
 		return leastCarRecords;
 	}
 
-	public void setLeastCarRecords(List<TrafficData> leastCarRecords) {
+	public void setLeastCarRecords(ArrayList<TrafficData> leastCarRecords) {
 		this.leastCarRecords = leastCarRecords;
 	}
 }

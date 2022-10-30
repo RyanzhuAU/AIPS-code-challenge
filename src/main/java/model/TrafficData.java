@@ -6,13 +6,13 @@ public class TrafficData {
 	
 	private LocalDateTime recordTimeStamp;
 	
-	private Integer carRecord;
+	private int carRecord;
 	
 	public TrafficData() {
 		
 	}
 	
-	public TrafficData(LocalDateTime recordTimeStamp, Integer carRecord) {
+	public TrafficData(LocalDateTime recordTimeStamp, int carRecord) {
 		this.recordTimeStamp = recordTimeStamp;
 		this.carRecord = carRecord;
 	}
@@ -25,11 +25,11 @@ public class TrafficData {
 		this.recordTimeStamp = recordTimeStamp;
 	}
 
-	public Integer getCarRecord() {
+	public int getCarRecord() {
 		return carRecord;
 	}
 
-	public void setCarRecord(Integer carRecord) {
+	public void setCarRecord(int carRecord) {
 		this.carRecord = carRecord;
 	}
 	
