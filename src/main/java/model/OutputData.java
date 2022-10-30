@@ -1,6 +1,7 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class OutputData {
 	
 	private int totalCarRecords = 0;
 	
-	private Map<Date, Integer> dailyTrafficRecord;
+	private Map<LocalDate, Integer> dailyTrafficRecords = new HashMap<>();
 	
 	private List<TrafficData> topThreeTrafficRecord;
 	
@@ -26,12 +27,20 @@ public class OutputData {
 		this.totalCarRecords += carRecords;
 	}
 
-	public Map<Date, Integer> getDailyTrafficRecord() {
-		return dailyTrafficRecord;
+	public Map<LocalDate, Integer> getDailyTrafficRecord() {
+		return dailyTrafficRecords;
 	}
 
-	public void setDailyTrafficRecord(Map<Date, Integer> dailyTrafficRecord) {
-		this.dailyTrafficRecord = dailyTrafficRecord;
+	public void addDailyTrafficRecord(TrafficData dailyTrafficRecord) {
+		LocalDate recordDate = dailyTrafficRecord.getRecordTimeStamp().toLocalDate();
+		int carRecord = dailyTrafficRecord.getCarRecord();
+		
+		if (this.dailyTrafficRecords.containsKey(recordDate)) {
+			int dailyRecordNum = this.dailyTrafficRecords.get(recordDate);
+			this.dailyTrafficRecords.put(recordDate, dailyRecordNum + carRecord);
+		} else {
+			this.dailyTrafficRecords.put(recordDate, carRecord);
+		}
 	}
 
 	public List<TrafficData> getTopThreeTrafficRecord() {

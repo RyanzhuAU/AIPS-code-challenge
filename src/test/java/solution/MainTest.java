@@ -6,7 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -35,6 +38,18 @@ public class MainTest {
 		
 		assertEquals(outputData.getTotalCarRecords(), 95);
 		
+		Map<LocalDate, Integer> dailyRecord = outputData.getDailyTrafficRecord();
+		int dailyNum = dailyRecord.get(LocalDate.parse("2021-12-01"));
+		assertEquals(dailyNum, 16);
+
+		dailyNum = dailyRecord.get(LocalDate.parse("2021-12-05"));
+		assertEquals(dailyNum, 48);
+		
+		dailyNum = dailyRecord.get(LocalDate.parse("2021-12-08"));
+		assertEquals(dailyNum, 27);
+		
+		dailyNum = dailyRecord.get(LocalDate.parse("2021-12-09"));
+		assertEquals(dailyNum, 4);
 		
 	}
 	

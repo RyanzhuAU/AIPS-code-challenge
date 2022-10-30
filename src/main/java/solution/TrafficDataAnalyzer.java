@@ -20,6 +20,7 @@ public class TrafficDataAnalyzer {
 			TrafficData data = this.trafficDataList.get(n);
 			
 			outputData.addTotalCarRecords(data.getCarRecord());
+			outputData.addDailyTrafficRecord(data);
 		}
 		
 		return outputData;
