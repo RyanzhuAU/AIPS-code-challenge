@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class OutputData {
 	
-	private int totalCarRecords;
+	private int totalCarRecords = 0;
 	
 	private Map<Date, Integer> dailyTrafficRecord;
 	
@@ -22,8 +22,8 @@ public class OutputData {
 		return totalCarRecords;
 	}
 
-	public void setTotalCarRecords(int totalCarRecords) {
-		this.totalCarRecords = totalCarRecords;
+	public void addTotalCarRecords(int carRecords) {
+		this.totalCarRecords += carRecords;
 	}
 
 	public Map<Date, Integer> getDailyTrafficRecord() {

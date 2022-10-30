@@ -1,8 +1,6 @@
 package solution;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import model.OutputData;
 import model.TrafficData;
@@ -18,6 +16,13 @@ public class TrafficDataAnalyzer {
 	public OutputData analysisTrafficData() {
 		OutputData outputData = new OutputData();
 		
+		for (int n = 0; n < this.trafficDataList.size(); n++) {
+			TrafficData data = this.trafficDataList.get(n);
+			
+			outputData.addTotalCarRecords(data.getCarRecord());
+		}
+		
 		return outputData;
 	}
+	
 }
