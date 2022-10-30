@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import model.OutputData;
 import model.TrafficData;
 
 public class MainTest {
@@ -20,6 +21,24 @@ public class MainTest {
 	
 	@Test
 	public void shouldLoadRecordFile() throws FileNotFoundException {
+		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
+		
+		assertEquals(trafficDataList.size(), 9);
+	}
+	
+	@Test
+	public void shouldGetCorrectOutputFromAnalysis() throws FileNotFoundException {
+		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
+
+		TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
+		OutputData outputData = dataAnalyzer.analysisTrafficData();
+		
+		assertEquals(outputData.getTotalCarRecords(), 95);
+		
+		
+	}
+	
+	private ArrayList<TrafficData> loadTrafficTestData() throws FileNotFoundException {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("test_data.txt").getFile());
 		FileReader fileReader = new FileReader(file);
@@ -27,6 +46,6 @@ public class MainTest {
 		FileLoader fileLoader = new FileLoader();
 		ArrayList<TrafficData> trafficDataList = fileLoader.loadRecordFile(fileReader);
 		
-		assertEquals(trafficDataList.size(), 24);
+		return trafficDataList;
 	}
 }
