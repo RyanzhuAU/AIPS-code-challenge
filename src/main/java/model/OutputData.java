@@ -13,7 +13,7 @@ public class OutputData {
 	
 	private ArrayList<TrafficData> topThreeTrafficRecords;
 	
-	private ArrayList<TrafficData> leastCarRecords; // The 1.5 hour period with least cars (i.e. 3 contiguous half hour records)
+	private ArrayList<TrafficData> leastThreeContiguousRecords; // The 1.5 hour period with least cars (i.e. 3 contiguous half hour records)
 	
 	public OutputData() {
 		
@@ -51,11 +51,11 @@ public class OutputData {
 		this.topThreeTrafficRecords = topThreeTrafficRecord;
 	}
 
-	public ArrayList<TrafficData> getLeastCarRecords() {
-		return leastCarRecords;
+	public ArrayList<TrafficData> getLeastThreeContiguousRecords() {
+		return leastThreeContiguousRecords;
 	}
 
-	public void setLeastCarRecords(ArrayList<TrafficData> leastCarRecords) {
-		this.leastCarRecords = leastCarRecords;
+	public void setLeastThreeContiguousRecords(ArrayList<TrafficData> leastCarRecords) {
+		this.leastThreeContiguousRecords = leastCarRecords;
 	}
 }

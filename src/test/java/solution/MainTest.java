@@ -81,7 +81,30 @@ public class MainTest {
 		data = topThreeTrafficRecord.get(2);
 		assertEquals(data.getRecordTimeStamp(), LocalDateTime.parse("2021-12-05T15:30:00"));
 		assertEquals(data.getCarRecord(), 15);
+	}
+	
+	@Test
+	public void shouldGetLeastThreeContiguousRecords() throws FileNotFoundException {
+		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
+
+		TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
+		OutputData outputData = dataAnalyzer.analysisTrafficData();
 		
+		ArrayList<TrafficData> leastThreeContiguousRecords = outputData.getLeastThreeContiguousRecords();
+		assertEquals(leastThreeContiguousRecords.size(), 3);
+		
+		TrafficData data = leastThreeContiguousRecords.get(0);
+		assertEquals(data.getRecordTimeStamp(), LocalDateTime.parse("2021-12-01T05:00:00"));
+		assertEquals(data.getCarRecord(), 5);
+		
+		data = leastThreeContiguousRecords.get(1);
+		assertEquals(data.getRecordTimeStamp(), LocalDateTime.parse("2021-12-01T05:30:00"));
+		assertEquals(data.getCarRecord(), 11);
+		
+		data = leastThreeContiguousRecords.get(2);
+		assertEquals(data.getRecordTimeStamp(), LocalDateTime.parse("2021-12-01T06:00:00"));
+		assertEquals(data.getCarRecord(), 0);
+
 	}
 	
 	private ArrayList<TrafficData> loadTrafficTestData() throws FileNotFoundException {
