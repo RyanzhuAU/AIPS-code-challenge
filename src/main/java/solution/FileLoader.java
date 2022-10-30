@@ -37,15 +37,14 @@ public class FileLoader {
 			BufferedReader br = new BufferedReader(fileReader);
 			String line = br.readLine();
 			
-			//Get the last name and first name for each person, and save them into Person object.
 	        while (line != null) {
+	        	// Split the line with space as the example file using the space as the separator
 	        	String[] recordData = line.split(" ");
 	        	
 	        	TrafficData trafficData = new TrafficData();
 	        	trafficData.setRecordTimeStamp(LocalDateTime.parse(recordData[0]));
 	        	trafficData.setCarRecord(Integer.valueOf(recordData[1]));
 	            
-	            //Add each person into the list which will be used for sorting.
 	        	records.add(trafficData);
 	            
 	            line = br.readLine();
@@ -54,7 +53,7 @@ public class FileLoader {
 	        br.close();
 	        
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO add error handler
 			e.printStackTrace();
 		}
 		

@@ -17,10 +17,12 @@ public class Solution {
 			
 			String filepath = args[0];
 			FileReader fileReader = new FileReader(filepath);
+
+			// initial the file loader class.
 			FileLoader fileLoader = new FileLoader();
-			
 			ArrayList<TrafficData> trafficDataList = fileLoader.loadRecordFile(fileReader);
 			
+			// This TrafficDataAnalyzer is focusing on the data analysis for those four tasks.
 			TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
 			OutputData outputData = dataAnalyzer.analysisTrafficData();
 			

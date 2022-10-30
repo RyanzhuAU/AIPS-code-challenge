@@ -60,6 +60,7 @@ public class OutputData {
 		this.leastThreeContiguousRecords = leastCarRecords;
 	}
 	
+	// generate the output report in the console.
 	public void generateOutputReport() {
 		// Q1
 		System.out.println("===== Total cars record =====");
