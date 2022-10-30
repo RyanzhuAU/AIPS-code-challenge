@@ -30,13 +30,21 @@ public class MainTest {
 	}
 	
 	@Test
-	public void shouldGetCorrectOutputFromAnalysis() throws FileNotFoundException {
+	public void shouldGetCorrectTotalRecords() throws FileNotFoundException {
 		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
 
 		TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
 		OutputData outputData = dataAnalyzer.analysisTrafficData();
 		
 		assertEquals(outputData.getTotalCarRecords(), 94);
+	}
+	
+	@Test
+	public void shouldGetDailyTrafficRecord() throws FileNotFoundException {
+		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
+
+		TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
+		OutputData outputData = dataAnalyzer.analysisTrafficData();
 		
 		Map<LocalDate, Integer> dailyRecord = outputData.getDailyTrafficRecord();
 		int dailyNum = dailyRecord.get(LocalDate.parse("2021-12-01"));
@@ -50,6 +58,14 @@ public class MainTest {
 		
 		dailyNum = dailyRecord.get(LocalDate.parse("2021-12-09"));
 		assertEquals(dailyNum, 4);
+	}
+	
+	@Test
+	public void shouldGetTopThreeTrafficRecord() throws FileNotFoundException {
+		ArrayList<TrafficData> trafficDataList = this.loadTrafficTestData();
+
+		TrafficDataAnalyzer dataAnalyzer = new TrafficDataAnalyzer(trafficDataList);
+		OutputData outputData = dataAnalyzer.analysisTrafficData();
 		
 		ArrayList<TrafficData> topThreeTrafficRecord = outputData.getTopThreeTrafficRecord();
 		assertEquals(topThreeTrafficRecord.size(), 3);
