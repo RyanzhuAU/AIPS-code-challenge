@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDateTime;
 
 public class TrafficData {
+	
 	private LocalDateTime recordTimeStamp;
 	
 	private Integer carRecord;
