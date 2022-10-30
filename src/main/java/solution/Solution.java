@@ -10,7 +10,13 @@ import model.TrafficData;
 public class Solution {
 	public static void main(String[] args) {
 		try {
-			FileReader fileReader = new FileReader("test_data.txt");
+			if (args.length == 0) {
+				System.out.print("Please input the filename.");
+				return;
+			}
+			
+			String filepath = args[0];
+			FileReader fileReader = new FileReader(filepath);
 			FileLoader fileLoader = new FileLoader();
 			
 			ArrayList<TrafficData> trafficDataList = fileLoader.loadRecordFile(fileReader);
